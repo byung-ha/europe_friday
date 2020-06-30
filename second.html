@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Europe Study</title>
+
+    <!-- chart.js library loading -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+</head>
+<body>
+    <div style="width: 1000px; height: 600px;">
+        <!-- chart html -->
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        var labels = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
+        var highestTemp = [0,0,0,0,0,0,0,0,0,0,0,0]
+        var lowestTemp = [0,0,0,0,0,0,0,0,0,0,0,0]
+    </script>
+    <!-- Draw Chart script -->
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    backgroundColor: "rgba(0,0,0,0)",
+                    label: "최고기온",
+                    data: highestTemp
+                },
+                {
+                    backgroundColor: "rgba(0,0,0,0)",
+                    label: "최저기온",
+                    data: lowestTemp
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+</body>
+</html>
