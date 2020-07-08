@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Europe Study</title>
+
+    <!-- chart.js library loading -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+</head>
+<body>
+    <div style="width: 300px; height: 200px;display:flex;">
+        Seoul<canvas id="chart1"></canvas>
+        LA<canvas id="chart2"></canvas>
+        Duesseldorf<canvas id="chart3"></canvas>
+    </div>
+    <div style="width: 1000px; height: 600px;">
+        <canvas id="chart"></canvas>
+    </div>
+
+    <script>
+        var labels = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
+        var temperatureData = [
+            //Seoul - https://www.google.com/search?q=yearly+temperature+in+seoul
+            [
+                [2,5,11,18,23,27,29,30,26,20,12,4], // highs
+                [-7,-5,1,7,13,18,22,22,16,9,2,-5] // lows
+            ], // lows
+            //LA - https://www.google.com/search?q=yearly+temperature+in+la
+            [
+                [20,21,21,23,24,26,29,29,29,26,23,20],
+                [10,10,11,13,15,17,18,19,18,16,12,9]
+            ],
+            //Duesseldorf - https://www.google.com/search?q=yearly+temperature+in+duesseldorf
+            [
+                [5,6,10,14,19,21,24,23,19,15,9,6],
+                [1,0,3,5,9,12,14,14,11,8,4,2]
+            ]
+        ]
+        var cityLabels = ["Seoul", "LA", "Duesseldorf"]
+        var avgHighTemp = []
+        var avgLowTemp = []
+
+        for(var i=0; i<cityLabels.length; i++) {
+            for(var j=0; j<12; j++){
+            }
+            //avgHighTemp.push()
+            //avgLowTemp.push()
+        }
+
+    </script>
+    <!-- Draw Chart script -->
+    <script>
+        for(var i=0; i<3; i++) {
+            var ctx = document.getElementById('chart'+(i+1)).getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        backgroundColor: "rgba(0,0,0,0)",
+                        label: "최고기온",
+                        data: temperatureData[i][0]
+                    },
+                    {
+                        backgroundColor: "rgba(0,0,0,0)",
+                        label: "최저기온",
+                        data: temperatureData[i][1]
+                    }]
+                }
+            });
+        }
+        var ctx = document.getElementById('chart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: cityLabels,
+                datasets: [{
+                    backgroundColor: "rgba(255,0,0,0.1)",
+                    label: "평균 최고 기온",
+                    data: avgHighTemp
+                },
+                {
+                    backgroundColor: "rgba(0,0,255,0.1)",
+                    label: "평균 최저 기온",
+                    data: avgLowTemp
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
