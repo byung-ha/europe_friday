@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Europe Study</title>
+
+    <!-- chart.js library loading -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+</head>
+<body>
+    <div style="width: 1000px; height: 600px;">
+        <!-- chart html -->
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        var labels = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
+        var highestTemp = [5,6,10,14,19,21,24,23,19,15,9,6]
+        var lowestTemp = [1,0,3,5,9,12,14,14,11,8,4,2]
+        var rainDays = [12,9,11,9,10,10,9,8,9,9,12,12]
+    </script>
+    <!-- Draw Chart script -->
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    backgroundColor: "rgba(100,0,0,0.2)",
+                    borderCapStyle: "square",
+                    borderColor:"rgba(255,0,0,0.8)",
+                    borderDash:[5,10],
+                    borderJoinStyle: "round",
+                    fill: 1,
+                    label: "최고기온",
+                    data: highestTemp
+                },
+                {
+                    backgroundColor: "rgba(0,0,0,0)",
+                    borderColor:"rgba(0,0,255,0.8)",
+                    borderDash:[5,10],
+                    label: "최저기온",
+                    data: lowestTemp,
+                },
+                {
+                    backgroundColor: "rgba(0,0,0,0)",
+                    label: "비오는",
+                    data: rainDays,
+                    yAxisID: "aa"
+                }]
+            },
+            options: {
+                scales: {
+                    id:"temp",
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    },
+                    {
+                        id:"aa",
+                        label: "days",
+                        ticks: {
+                            beginAtZero: true,
+                            max: 30
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Europe Study</title>
+
+    <!-- chart.js library loading -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+</head>
+<body>
+    <div style="width: 1000px; height: 600px;">
+        <!-- chart html -->
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        var steps = 100
+        var range = 5
+        var xData = ['1월', '2월', '3월', '4월']
+        var yData = [ 100, 20, 10, 40]
+
+        /*
+        for(var i=-steps; i <= steps; i++) {
+            var x = i*range/steps
+            xData.push(x%1 == 0? x:'')
+            // Data process
+            yData.push(1/Math.sqrt(2*Math.PI)*Math.pow(Math.E, -1*Math.pow(x, 2)/2))
+        }
+        */
+    </script>
+    <!-- Draw Chart script -->
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: xData,
+                datasets: [{
+                    data: yData
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+</body>
+</html>
